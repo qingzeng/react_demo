@@ -1,12 +1,13 @@
 import { Checkbox ,Row ,Col } from 'antd';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = ['Apple', 'Pear', 'Orange'];
 const defaultCheckedList = ['Apple', 'Orange'];
 
-var pictures = [
+var picturesData = [
     {
       id: '1',
       name: 'foo',
@@ -29,6 +30,8 @@ class App extends React.Component {
     checkedList: defaultCheckedList,
     indeterminate: true,
     checkAll: false,
+    pictures:[],
+    value:'',
   };
 
   onChange = checkedList => {
@@ -48,10 +51,17 @@ class App extends React.Component {
   };
 
   onChangeSelect =(item)=>{
-      console.log("onChangeSelect",item)
+      console.log("onChangeSelect",item);
+      this.props.onChange(item);
   }
 
   render() {
+    let {pictures,value } =this.props;
+    
+    const { onChange} =this.props;
+
+    pictures=pictures||picturesData;
+    
     return (
       <div>
         <div style={{ borderBottom: '1px solid #E9E9E9' }}>
@@ -64,12 +74,12 @@ class App extends React.Component {
           </Checkbox>
         </div>
         <br />
-        <Checkbox.Group style={{ width: '100%' }} onChange={this.onChangeSelect}>
-    <Row>
+        <Checkbox.Group style={{ width: '100%' }} onChange={(value)=>this.onChange(value)}>
+        <Row>
         {
           pictures.map((item,index)=>{
             return (
-                <Col span={8}> 
+                <Col span={8} key={index} >  
                  <Checkbox value={item.id} 
                  style={{
                     position:'absolute',
@@ -88,15 +98,13 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+    pictures: PropTypes.array,
+    value:PropTypes.string,
+    onChange:PropTypes.func,
+  };
+
 export default App;
-
-
-      {/* <Col span={8}>
-        <Checkbox value="A">A</Checkbox>
-        <br />
-        <img src="https://gw.alipayobjects.com/mdn/rms_d212b7/afts/img/A*LlfeSa8N0WgAAAAAAAAAAABkARQnAQ" />                
-      </Col> */}
-
 
 
 
