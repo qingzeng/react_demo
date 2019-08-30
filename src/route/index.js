@@ -5,7 +5,8 @@ import Layout from '../views/Layout';
 import Login from '../views/Login';
 import Register from '../views/Register';
 
-import Home from '@/views/Home';
+// import Home from '@/views/Home';
+import Home from '@/views/Test';
 import Form from '@/views/Form';
 import Table from '@/views/Table';
 import Calendar from '@/views/Calendar';
