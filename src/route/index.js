@@ -5,8 +5,8 @@ import Layout from '../views/Layout';
 import Login from '../views/Login';
 import Register from '../views/Register';
 
-// import Home from '@/views/Home';
-import Home from '@/views/Test';
+import Home from '@/views/Home';
+import Test from '@/views/Test';
 import Form from '@/views/Form';
 import Table from '@/views/Table';
 import Calendar from '@/views/Calendar';
@@ -17,6 +17,10 @@ import Mailbox from '@/views/Mailbox';
 import Page2 from '@/views/Page2';
 
 export const childRoutes = [
+  {
+    'path':'/test',
+    'component': Test
+  },
   {
     'path':'/home',
     'component': Home,
